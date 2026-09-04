@@ -4,4 +4,3 @@ font-size = 13
 window-padding-x = 8
 
 macos-icon = custom
-macos-custom-icon = ~/.config/ghostty/icon.icns
