@@ -1,3 +1,5 @@
+export CLICOLOR=1
+
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
@@ -6,7 +8,12 @@ setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 bindkey -v
-export CLICOLOR=1
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 
 alias v="nvim"
 
