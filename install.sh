@@ -7,8 +7,8 @@ brew bundle --file="$ROOT/Brewfile"
 
 mkdir -p "$HOME/.config"
 
-for item in ghostty nvim tmux starship.toml; do
-  ln -sfn "$ROOT/.config/$item" "$HOME/.config/$item"
+for item in "$ROOT"/.config/*; do
+  ln -sfn "$item" "$HOME/.config/${item##*/}"
 done
 
 ln -sfn "$ROOT/.zshrc" "$HOME/.zshrc"
