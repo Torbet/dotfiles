@@ -41,8 +41,7 @@ require("mini.surround").setup()
 require("mini.files").setup()
 require("mini.pick").setup()
 require("mini.completion").setup()
-require("mini.diff").setup({ view = { style = "sign" } })
-require("mini.extra").setup()
+require("mini.diff").setup()
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
 
@@ -50,7 +49,6 @@ vim.keymap.set("n", "<leader>e", MiniFiles.open)
 vim.keymap.set("n", "<leader>f", MiniPick.builtin.files)
 vim.keymap.set("n", "<leader>g", MiniPick.builtin.grep_live)
 vim.keymap.set("n", "<leader>b", MiniPick.builtin.buffers)
-vim.keymap.set("n", "<leader>d", MiniExtra.pickers.git_hunks)
 
 vim.diagnostic.config({ virtual_text = true, severity_sort = true })
 
