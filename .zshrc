@@ -1,29 +1,28 @@
-export CLICOLOR=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export XDG_CONFIG_HOME=$HOME/.config
 export EDITOR=nvim
+export CLICOLOR=1
+
+typeset -U path
+path=( $HOMEBREW_PREFIX/opt/libpq/bin $path )
 
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_FIND_NO_DUPS
 
-typeset -U path
-path=( /opt/homebrew/opt/libpq/bin $path )
-
 bindkey -v
 
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search edit-command-line
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+zle -N edit-command-line
+
 bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
-
-autoload -Uz edit-command-line
-zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 alias v=nvim
-
-autoload -Uz add-zsh-hook
 
 venv() {
   local dir=$PWD venv
@@ -44,6 +43,7 @@ venv() {
   fi
 }
 
+autoload -Uz add-zsh-hook
 add-zsh-hook chpwd venv
 venv
 
@@ -52,5 +52,5 @@ autoload -Uz compinit && compinit
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

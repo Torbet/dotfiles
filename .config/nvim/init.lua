@@ -1,23 +1,25 @@
 vim.g.mapleader = " "
 
-vim.o.completeopt = "menuone,noselect,fuzzy"
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.signcolumn = "yes"
+vim.o.wrap = false
+vim.o.smoothscroll = true
+vim.o.winborder = "rounded"
+
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.expandtab = true
-vim.o.swapfile = false
-vim.o.undofile = true
-vim.o.mouse = "a"
-vim.o.signcolumn = "yes"
-vim.o.wrap = false
+vim.o.completeopt = "menuone,noselect,fuzzy"
+
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+vim.o.mouse = "a"
 vim.o.clipboard = "unnamedplus"
-vim.o.smoothscroll = true
+vim.o.undofile = true
+vim.o.swapfile = false
 vim.o.confirm = true
-vim.o.termguicolors = true
-vim.o.winborder = "rounded"
 
 vim.pack.add({
   "https://github.com/catppuccin/nvim",
@@ -29,7 +31,7 @@ vim.pack.add({
   "https://github.com/github/copilot.vim",
 })
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme("catppuccin-mocha")
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -43,16 +45,14 @@ require("mini.pick").setup()
 require("mini.completion").setup()
 require("mini.diff").setup()
 
-vim.keymap.set("n", "<leader><leader>", "<C-^>")
+vim.diagnostic.config({ virtual_text = true, severity_sort = true })
+vim.treesitter.language.register("json", "jsonl")
 
+vim.keymap.set("n", "<leader><leader>", "<C-^>")
 vim.keymap.set("n", "<leader>e", MiniFiles.open)
 vim.keymap.set("n", "<leader>f", MiniPick.builtin.files)
 vim.keymap.set("n", "<leader>g", MiniPick.builtin.grep_live)
 vim.keymap.set("n", "<leader>b", MiniPick.builtin.buffers)
-
-vim.diagnostic.config({ virtual_text = true, severity_sort = true })
-
-vim.treesitter.language.register("json", "jsonl")
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(args) pcall(vim.treesitter.start, args.buf) end,
