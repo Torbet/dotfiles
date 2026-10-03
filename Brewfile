@@ -9,6 +9,7 @@ brew "zsh-syntax-highlighting"
 brew "tree-sitter-cli"
 brew "lazygit"
 brew "node"
+brew "atuin"
 
 cask "ghostty"
 cask "rectangle"
