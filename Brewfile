@@ -10,6 +10,7 @@ brew "tree-sitter-cli"
 brew "lazygit"
 brew "node"
 brew "atuin"
+brew "zoxide"
 
 cask "ghostty"
 cask "rectangle"
