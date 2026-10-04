@@ -24,6 +24,8 @@ bindkey -M vicmd v edit-command-line
 
 alias v=nvim
 
+j() { jq -C "${2:-.}" "$1" | less -R }
+
 venv() {
   local dir=$PWD venv
 
